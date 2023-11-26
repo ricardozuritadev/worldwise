@@ -1,5 +1,13 @@
+import PageNav from "../components/page-nav";
+
 const Homepage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <PageNav />
+
+      <h1>WorldWise</h1>
+    </div>
+  );
 };
 
 export default Homepage;
