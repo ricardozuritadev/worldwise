@@ -26,7 +26,6 @@
   /* Paths */
   "baseUrl": "./src",
   "paths": {
-    "assets": ["assets/*"],
     "components/*": ["components/*"],
     "data": ["data/*"],
     "pages/*": ["pages/*"],
