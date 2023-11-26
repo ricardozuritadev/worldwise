@@ -26,6 +26,7 @@
   /* Paths */
   "baseUrl": "./src",
   "paths": {
+    "constants/*": ["constsants/*"],
     "components/*": ["components/*"],
     "data": ["data/*"],
     "pages/*": ["pages/*"],
