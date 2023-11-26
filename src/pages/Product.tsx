@@ -1,11 +1,14 @@
+import PageNav from "../components/PageNav";
 import styles from "./Product.module.css";
 
-export default function Product() {
+const Product = () => {
   return (
     <main className={styles.product}>
+      <PageNav />
+
       <section>
         <img
-          src="img-1.jpg"
+          src="images/img-1.jpg"
           alt="person with dog overlooking mountain with sunset"
         />
         <div>
@@ -25,4 +28,6 @@ export default function Product() {
       </section>
     </main>
   );
-}
+};
+
+export default Product;
