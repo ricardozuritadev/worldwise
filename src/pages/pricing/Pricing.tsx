@@ -1,6 +1,6 @@
 // Uses the same styles as Product
-import PageNav from "../components/PageNav";
-import styles from "./Product.module.css";
+import PageNav from "../../components/page-nav/PageNav";
+import styles from "../product/Product.module.css";
 
 const Product = () => {
   return (
