@@ -1,5 +1,6 @@
-import PageNav from "../../components/page-nav/PageNav";
 import styles from "./Product.module.css";
+
+import PageNav from "../../components/page-nav";
 
 const Product = () => {
   return (

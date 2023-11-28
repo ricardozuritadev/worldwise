@@ -1,8 +1,8 @@
 import styles from "./Sidebar.module.css";
 
-import AppNav from "../app-nav/AppNav";
-import Footer from "../footer/Footer";
-import Logo from "../logo/Logo";
+import AppNav from "../app-nav";
+import Footer from "../footer";
+import Logo from "../logo";
 
 const Sidebar = () => {
   return (
