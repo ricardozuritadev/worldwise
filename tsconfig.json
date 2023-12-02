@@ -30,6 +30,7 @@
     "components/*": ["components/*"],
     "data": ["data/*"],
     "pages/*": ["pages/*"],
-    "styles/*": ["styles/*"]
+    "styles/*": ["styles/*"],
+    "types/*": ["types/*"]
   }
 }
