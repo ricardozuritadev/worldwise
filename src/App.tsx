@@ -13,6 +13,7 @@ import Spinner from "./components/spinner";
 
 const AppLayout = lazy(() => import("./pages/app-layout"));
 const CityList = lazy(() => import("./components/city-list"));
+const CountryList = lazy(() => import("./components/country-list"));
 
 const App = () => {
   const [cities, setCities] = useState<City[]>([]);
@@ -62,7 +63,14 @@ const App = () => {
               </Suspense>
             }
           />
-          <Route path="countries" element={<p>Countries</p>} />
+          <Route
+            path="countries"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <CountryList isLoading={isLoading} cities={cities} />
+              </Suspense>
+            }
+          />
           <Route path="form" element={<p>Form</p>} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
