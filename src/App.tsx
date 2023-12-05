@@ -1,5 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import axios from "axios";
 
 import { City } from "./types/city.types";
@@ -14,6 +14,8 @@ import Spinner from "./components/spinner";
 const AppLayout = lazy(() => import("./pages/app-layout"));
 const CityList = lazy(() => import("./components/city-list"));
 const CountryList = lazy(() => import("./components/country-list"));
+const Form = lazy(() => import("./components/form"));
+const CityInfo = lazy(() => import("./components/city"));
 
 const App = () => {
   const [cities, setCities] = useState<City[]>([]);
@@ -47,8 +49,9 @@ const App = () => {
             </Suspense>
           }
         >
+          <Route index element={<Navigate replace to="cities" />} />
           <Route
-            index
+            path="cities"
             element={
               <Suspense fallback={<Spinner />}>
                 <CityList isLoading={isLoading} cities={cities} />
@@ -56,10 +59,10 @@ const App = () => {
             }
           />
           <Route
-            path="cities"
+            path="cities/:id"
             element={
               <Suspense fallback={<Spinner />}>
-                <CityList isLoading={isLoading} cities={cities} />
+                <CityInfo />
               </Suspense>
             }
           />
@@ -71,7 +74,14 @@ const App = () => {
               </Suspense>
             }
           />
-          <Route path="form" element={<p>Form</p>} />
+          <Route
+            path="form"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Form />
+              </Suspense>
+            }
+          />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
