@@ -1,9 +1,10 @@
+import { ButtonType } from "../../types/button.types";
 import styles from "./Button.module.css";
 
 type ButtonProps = {
   children: React.ReactNode;
-  onClick: () => void;
-  type: string;
+  onClick: (e: React.SyntheticEvent<HTMLButtonElement, Event>) => void;
+  type: ButtonType;
 };
 
 function Button({ children, onClick, type }: ButtonProps) {
