@@ -18,19 +18,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Paths */
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-
-  /* Paths */
-  "baseUrl": "./src",
-  "paths": {
-    "constants/*": ["constsants/*"],
-    "components/*": ["components/*"],
-    "data": ["data/*"],
-    "pages/*": ["pages/*"],
-    "styles/*": ["styles/*"],
-    "types/*": ["types/*"]
-  }
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
