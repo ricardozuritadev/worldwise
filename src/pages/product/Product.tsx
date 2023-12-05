@@ -1,6 +1,8 @@
 import styles from "./Product.module.css";
 
-import PageNav from "../../components/page-nav";
+import { PRODUCT } from "constants/pages/product.constants";
+
+import PageNav from "components/page-nav";
 
 const Product = () => {
   return (
@@ -13,18 +15,9 @@ const Product = () => {
           alt="person with dog overlooking mountain with sunset"
         />
         <div>
-          <h2>About WorldWide.</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo est
-            dicta illum vero culpa cum quaerat architecto sapiente eius non
-            soluta, molestiae nihil laborum, placeat debitis, laboriosam at fuga
-            perspiciatis?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            doloribus libero sunt expedita ratione iusto, magni, id sapiente
-            sequi officiis et.
-          </p>
+          <h2>{PRODUCT.TITLE}</h2>
+          <p>{PRODUCT.DESCRIPTION_FIRST}</p>
+          <p>{PRODUCT.DESCRIPTION_SECOND}</p>
         </div>
       </section>
     </main>

@@ -1,7 +1,9 @@
+import { GENERAL } from "constants/general.constants";
+
 export default function PageNotFound() {
   return (
     <div>
-      <h1>Page not found 😢</h1>
+      <h1>{GENERAL.PAGE_NOT_FOUND} 😢</h1>
     </div>
   );
 }

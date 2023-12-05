@@ -1,7 +1,7 @@
 import styles from "./AppLayout.module.css";
 
-import Sidebar from "../../components/sidebar";
-import Map from "../../components/map";
+import Sidebar from "components/sidebar";
+import Map from "components/map";
 
 const AppLayout = () => {
   return (

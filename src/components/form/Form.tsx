@@ -4,9 +4,10 @@ import styles from "./Form.module.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ButtonType } from "../../types/button.types";
+import { ButtonType } from "types/button.types";
+import { FORM } from "constants/components/form.constants";
 
-import Button from "../button";
+import Button from "components/button";
 
 export function convertToEmoji(countryCode: string) {
   const codePoints = countryCode
@@ -26,7 +27,7 @@ function Form() {
   return (
     <form className={styles.form}>
       <div className={styles.row}>
-        <label htmlFor="cityName">City name</label>
+        <label htmlFor="cityName">{FORM.CITY_NAME}</label>
         <input
           id="cityName"
           onChange={(e) => setCityName(e.target.value)}
@@ -36,7 +37,9 @@ function Form() {
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="date">When did you go to {cityName}?</label>
+        <label htmlFor="date">
+          {FORM.WHEN} {cityName}?
+        </label>
         {/* <input
           id="date"
           onChange={(e) => setDate(e.target.value)}
@@ -45,7 +48,9 @@ function Form() {
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="notes">Notes about your trip to {cityName}</label>
+        <label htmlFor="notes">
+          {FORM.NOTES} {cityName}
+        </label>
         <textarea
           id="notes"
           onChange={(e) => setNotes(e.target.value)}
@@ -55,7 +60,7 @@ function Form() {
 
       <div className={styles.buttons}>
         <Button onClick={() => console.log("click")} type={ButtonType.Primary}>
-          Add
+          {FORM.ADD}
         </Button>
 
         <Button

@@ -1,6 +1,8 @@
 import styles from "./Map.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+import { GENERAL } from "constants/general.constants";
+
 const Map = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -10,9 +12,9 @@ const Map = () => {
 
   return (
     <div className={styles.mapContainer} onClick={() => navigate("form")}>
-      <h1>Map</h1>
+      <h1>{GENERAL.MAP}</h1>
       <h2>
-        Position: {lat}, {lng}
+        {GENERAL.POSITION}: {lat}, {lng}
       </h2>
 
       <button

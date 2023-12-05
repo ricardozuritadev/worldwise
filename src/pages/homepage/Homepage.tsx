@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-
 import styles from "./Homepage.module.css";
 
-import PageNav from "../../components/page-nav";
+import { Link } from "react-router-dom";
+
+import { HOMEPAGE } from "constants/pages/homepage.constants";
+
+import PageNav from "components/page-nav";
 
 const Homepage = () => {
   return (
@@ -11,19 +13,15 @@ const Homepage = () => {
 
       <section>
         <h1>
-          You travel the world.
+          {HOMEPAGE.TITLE}
           <br />
-          WorldWise keeps track of your adventures.
+          {HOMEPAGE.SUBTITLE}
         </h1>
 
-        <h2>
-          A world map that tracks your footsteps into every city you can think
-          of. Never forget your wonderful experiences, and show your friends how
-          you have wandered the world.
-        </h2>
+        <h2>{HOMEPAGE.DESCRIPTION}</h2>
 
         <Link to="app" className="cta">
-          Start tracking now
+          {HOMEPAGE.CTA}
         </Link>
       </section>
     </main>

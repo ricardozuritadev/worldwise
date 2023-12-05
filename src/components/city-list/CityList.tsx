@@ -1,19 +1,18 @@
 import styles from "./CityList.module.css";
-import { useCities } from "../../hooks/useCities";
+import { useCities } from "hooks/useCities";
 
-import Spinner from "../spinner";
-import CityItem from "../city-item/CityItem";
-import Message from "../message";
+import { CITY_LIST } from "constants/components/city-list.constants";
+
+import Spinner from "components/spinner";
+import CityItem from "components/city-item";
+import Message from "components/message";
 
 const CityList = () => {
   const { cities, isLoading } = useCities();
 
   if (isLoading) return <Spinner />;
 
-  if (!cities.length)
-    return (
-      <Message message="Add your first city by clicking on a city on the map" />
-    );
+  if (!cities.length) return <Message message={CITY_LIST.ADD} />;
 
   return (
     <ul className={styles.cityList}>

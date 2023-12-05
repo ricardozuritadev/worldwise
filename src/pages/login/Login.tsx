@@ -1,8 +1,9 @@
-import { useState } from "react";
-
 import styles from "./Login.module.css";
 
-import PageNav from "../../components/page-nav";
+import { useState } from "react";
+
+import PageNav from "components/page-nav";
+import { LOGIN } from "constants/pages/login.constants";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
@@ -15,7 +16,7 @@ export default function Login() {
 
       <form className={styles.form}>
         <div className={styles.row}>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">{LOGIN.EMAIL}</label>
           <input
             type="email"
             id="email"
@@ -25,7 +26,7 @@ export default function Login() {
         </div>
 
         <div className={styles.row}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{LOGIN.PASSWORD}</label>
           <input
             type="password"
             id="password"
@@ -35,7 +36,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button className="cta">Login</button>
+          <button className="cta">{LOGIN.CTA}</button>
         </div>
       </form>
     </main>

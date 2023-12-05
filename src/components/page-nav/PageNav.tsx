@@ -1,8 +1,11 @@
-import { NavLink } from "react-router-dom";
-
 import styles from "./PageNav.module.css";
 
-import Logo from "../logo";
+import { NavLink } from "react-router-dom";
+
+import { APP_NAV } from "constants/components/app-nav.constants";
+import { ROUTES } from "constants/components/routes.constants";
+
+import Logo from "components/logo";
 
 const PageNav = () => {
   return (
@@ -11,14 +14,14 @@ const PageNav = () => {
 
       <ul>
         <li>
-          <NavLink to="/pricing">Pricing</NavLink>
+          <NavLink to={`/${ROUTES.PRICING}`}>{APP_NAV.PRICING}</NavLink>
         </li>
         <li>
-          <NavLink to="/product">Product</NavLink>
+          <NavLink to={`/${ROUTES.PRODUCT}`}>{APP_NAV.PRODUCT}</NavLink>
         </li>
         <li>
-          <NavLink to="/login" className={styles.ctaLink}>
-            Login
+          <NavLink to={`/${ROUTES.LOGIN}`} className={styles.ctaLink}>
+            {APP_NAV.LOGIN}
           </NavLink>
         </li>
       </ul>
