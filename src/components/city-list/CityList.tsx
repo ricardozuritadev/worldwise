@@ -1,16 +1,13 @@
 import styles from "./CityList.module.css";
-import { City } from "../../types/city.types";
+import { useCities } from "../../hooks/useCities";
 
 import Spinner from "../spinner";
 import CityItem from "../city-item/CityItem";
 import Message from "../message";
 
-type CityListProps = {
-  isLoading: boolean;
-  cities: City[];
-};
+const CityList = () => {
+  const { cities, isLoading } = useCities();
 
-const CityList = ({ isLoading, cities }: CityListProps) => {
   if (isLoading) return <Spinner />;
 
   if (!cities.length)
