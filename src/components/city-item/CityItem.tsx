@@ -1,4 +1,5 @@
 import styles from "./CityItem.module.css";
+import { Link } from "react-router-dom";
 
 import { City } from "../../types/city.types";
 
@@ -8,15 +9,25 @@ type CityProps = {
   city: City;
 };
 
-const CityItem = ({ city }: CityProps) => {
-  const { cityName, emoji, date } = city;
+const CityItem = ({
+  city: {
+    cityName,
+    emoji,
+    date,
+    id,
+    position: { lat, lng }
+  }
+}: CityProps) => {
+  const queryString: string = `${id}?lat=${lat}&lng=${lng}`;
 
   return (
-    <li className={styles.cityItem}>
-      <span className={styles.emoji}>{emoji}</span>
-      <h3 className={styles.name}>{cityName}</h3>
-      <time className={styles.date}>({formatDates(date)})</time>
-      <button className={styles.deleteBtn}>&times;</button>
+    <li>
+      <Link to={queryString} className={styles.cityItem}>
+        <span className={styles.emoji}>{emoji}</span>
+        <h3 className={styles.name}>{cityName}</h3>
+        <time className={styles.date}>({formatDates(date)})</time>
+        <button className={styles.deleteBtn}>&times;</button>
+      </Link>
     </li>
   );
 };
