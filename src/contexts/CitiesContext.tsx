@@ -13,10 +13,12 @@ import { ROUTES } from "constants/components/routes.constants";
 
 type CitiesContextModel = {
   cities: City[];
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
   currentCity: City | undefined;
   setCurrentCity: Dispatch<SetStateAction<City | undefined>>;
   isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  createCity: (newCity: City) => Promise<void>;
+  deleteCity: (id: number) => void;
 };
 
 type CitiesContextProviderProps = {
@@ -32,25 +34,57 @@ const CitiesContextProvider = ({ children }: CitiesContextProviderProps) => {
   const [currentCity, setCurrentCity] = useState<City | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const getCities = async () => {
-    const res = await axios.get(`${BASE_URL}${ROUTES.CITIES}`);
-    return res.data;
-  };
+  async function getCities() {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get(`${BASE_URL}${ROUTES.CITIES}`);
+      setCities(data);
+    } catch (error) {
+      alert("There was an error loading data...");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function createCity(newCity: City) {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.post(
+        `${BASE_URL}${ROUTES.CITIES}/`,
+        newCity
+      );
+      setCities((cities) => [...cities, data]);
+    } catch (error) {
+      alert("There was an error creating city...");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function deleteCity(id: number) {
+    try {
+      setIsLoading(true);
+      await axios.delete(`${BASE_URL}${ROUTES.CITIES}/${id}`);
+      setCities((cities) => cities.filter((city) => city.id !== id));
+    } catch (error) {
+      alert("There was an error deleting city...");
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    setIsLoading(true);
-    getCities()
-      .then((data) => setCities(data))
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
+    getCities();
   }, []);
 
   const providerValue = {
     cities,
-    setIsLoading,
     currentCity,
     setCurrentCity,
-    isLoading
+    isLoading,
+    setIsLoading,
+    createCity,
+    deleteCity
   };
 
   return (
