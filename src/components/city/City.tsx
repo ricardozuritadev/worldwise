@@ -1,5 +1,5 @@
 import styles from "./City.module.css";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCities } from "hooks/useCities";
 
@@ -17,22 +17,26 @@ const WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
 
 const City = () => {
   const { id } = useParams();
-  const { isLoading, setIsLoading, setCurrentCity, currentCity } = useCities();
+  const { isLoading, setIsLoading, currentCity, setCurrentCity } = useCities();
 
-  const getCity = async (id: string) => {
-    const res = await axios.get(`${BASE_URL}${ROUTES.CITIES}/${id}`);
-    return res.data;
-  };
+  const getCity = useCallback(
+    async (id: string) => {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(`${BASE_URL}${ROUTES.CITIES}/${id}`);
+        setCurrentCity(data);
+      } catch (error) {
+        alert("There was an error loading data...");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [setCurrentCity, setIsLoading]
+  );
 
   useEffect(() => {
-    setIsLoading(true);
-    if (id) {
-      getCity(id)
-        .then((data) => setCurrentCity(data))
-        .catch((error) => console.log(error))
-        .finally(() => setIsLoading(false));
-    }
-  }, [id, setCurrentCity, setIsLoading]);
+    if (id) getCity(id);
+  }, [id, getCity]);
 
   if (isLoading) return <Spinner />;
 
