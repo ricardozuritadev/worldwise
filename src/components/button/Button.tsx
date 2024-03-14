@@ -4,8 +4,8 @@ import { ButtonType } from "types/button.types";
 
 type ButtonProps = {
   children: React.ReactNode;
-  onClick: (e: React.SyntheticEvent<HTMLButtonElement, Event>) => void;
   type: ButtonType;
+  onClick?: (e: React.SyntheticEvent<HTMLButtonElement, Event>) => void;
 };
 
 function Button({ children, onClick, type }: ButtonProps) {
